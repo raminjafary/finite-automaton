@@ -9,6 +9,7 @@ export function char(symbol: string) {
 }
 
 export const EPSILON = "ε";
+export const EPSILON_CLOSURE = `${EPSILON}*`;
 
 export function epsilon() {
   return char(EPSILON);
@@ -64,7 +65,7 @@ export function rep(fragment: NFA) {
 
   fragment.outState.accpeting = false;
   fragment.outState.addTransition(EPSILON, end);
-  
+
   end.addTransition(EPSILON, fragment.initState);
 
   return new NFA(start, end);
